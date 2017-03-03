@@ -11,10 +11,13 @@ struct List
 	int age;
 	int persNumber;
 };
-void ShowStruct( const List *ar, int n);
-void removeData(List *ar, int n, int k); // n - size of array , k - removing element
+// n  - size of an array
+int n = 5;
+void ShowStruct(const List *ar, int n);
+//function that removes chosen element add elements that go before it to the end of a queue
+void removeData(List *ar, int &n, int &k); // n - size of an array , k - removing element
 
- int n = 5;
+
 int main()
 {
 	
@@ -32,9 +35,7 @@ int main()
 	std::cin >> k;
 	std::cin.get();
 	removeData(group, n, k);
-	n -= 1;
 	ShowStruct(group, n);
-	
 	std::cin.get();
     return 0;
 }
@@ -45,38 +46,38 @@ void ShowStruct(const List *ar, int n)
 	for (i; i < n; i++)
 	std::cout << ar[i].persNumber << " " << ar[i].name
 			<< " " << ar[i].age << std::endl;
-
-	
 }
 
-void removeData(List *ar, int n, int k)
+void removeData(List *ar, int &n, int &k)
 {
+	//temporary for storage
 	List *ptr = new List[k];
 	
-	int i = 0;
-	int m = 0;
-	for (; i < k; i++)
+	//counter is created for replacment in a queue
+	int counter = 0;
+	//first loop saves all "k - 1" elements to temporary storage
+	for (int i = 0; i < k; i++)
 	{
 		ptr[i].name = ar[i].name;
 		ptr[i].age = ar[i].age;
-		
+		counter++;
 	}
-	
-	for (; i<n; m++, i++)
+	//second loop ups all elements next after k
+	for (int m = 0; counter<n; m++, counter++)
 	{
-		ar[m].name = ar[i].name;
-		ar[m].age = ar[i].age;
-		
-		
+		ar[m].name = ar[counter].name;
+		ar[m].age = ar[counter].age;
 	}
-	
-	for (i = 0; m<n; m++,i++)
+	//quantity of elements goes after k
+	int c = n - k;
+	//third loop adds data from temporary storage to the end of queue
+	for (int i = 0; c < n; i++, c++)
 	{
-		ar[m].name = ptr[i].name;
-		ar[m].age = ptr[i].age;
-		
+		ar[c].name = ptr[i].name;
+		ar[c].age = ptr[i].age;
 	}
-	
+	//decreases max elements of an array
+	n--;
 	
 }
 
