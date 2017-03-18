@@ -12,10 +12,11 @@ public:
 	Stack(int n=10);
 	Stack(const Stack &st);
 	~Stack();
-	bool isempty()const;
-	bool isfull()const;
+	bool isEmpty()const;
+	bool isFull()const;
 	bool push(const Item &item);
 	bool pop(Item &item);
+	void showStack()const;
 	Stack & operator=(const Stack& st);
 
 };

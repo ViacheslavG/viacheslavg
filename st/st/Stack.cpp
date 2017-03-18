@@ -9,16 +9,17 @@ Stack::Stack(int n)
 	std::cout << "An object has been created" << std::endl;
 	size = n;
 	pitems = new Item[size];
-	top = size - 1;
+	top = 0;
 }
 
 Stack::Stack(const Stack & st)
 {
-	size = st.size;
+	*this = st;
+	/*size = st.size;
 	top = st.top;
 	pitems = new Item[size];
 	for (int i = 0; i < size; i++)
-		pitems[i] = st.pitems[i];
+		pitems[i] = st.pitems[i];*/
 
 }
 
@@ -28,39 +29,44 @@ Stack::~Stack()
 	delete[] pitems;
 }
 
-bool Stack::isempty() const
+bool Stack::isEmpty() const
 {
 	return top==0;
 }
 
-bool Stack::isfull() const
+bool Stack::isFull() const
 {
 	return top==size;
 }
 //checking the remaining space and then adds the new element
 bool Stack::push(const Item & item)
 {
-	if (!isfull())
+	if (!isFull())
 	{
-		top++;
 		pitems[top] = item;
+		top++;
 		return true;
 	}
 	else return false;
 }
 //checking if there any elements in stack and then revomes last element
-bool Stack::pop( Item & item)
+bool Stack::pop(Item & item)
 {
-	if (!isempty())
+	if (!isEmpty())
 	{
 		item = pitems[top];
 		size--;
-		
 		top--;
 	
 		return true;
 	}
 	return false;
+}
+
+void Stack::showStack() const
+{
+	for (int i = 0; i < top; i++)
+		std::cout << pitems[i] << std::endl;
 }
 
 //checking on assingment two similar objects, then deletes all items in stack and creates new array
