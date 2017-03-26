@@ -78,7 +78,7 @@ VintagePort::VintagePort():Port("noone","vintage",0), m_nickname("noone"),m_year
 VintagePort::VintagePort(const char * brand,int bottles, char * nickname, int year):Port(brand,"vintage",bottles)
 {
 	//creating definition of class VintagePort using implicit copy Constructor of class Port
-	m_nickname = new char[std::strlen(nickname) + 1];
+	m_nickname = new char[std::strlen(nickname)];
 	strcpy(m_nickname, nickname);
 	m_year = year;
 }
@@ -96,7 +96,7 @@ VintagePort & VintagePort::operator=(const VintagePort & vp)
 		return *this;
 	//using explicit operator=() from class Port
 	Port::operator=(vp);
-	m_nickname = new char[std::strlen(vp.m_nickname) + 1];
+	m_nickname = new char[std::strlen(vp.m_nickname)];
 	strcpy(m_nickname, vp.m_nickname);
 	m_year = vp.m_year;
 	return *this;
