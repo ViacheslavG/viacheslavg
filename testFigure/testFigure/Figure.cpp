@@ -2,16 +2,20 @@
 #include "Figure.h"
 
 
-Circle::Circle(int quantity, int n):Figure(quantity)
+Figure::Figure(int a)
 {
-	r = n;
+	side = a;
+}
+
+Circle::Circle(int m_a):Figure(m_a)
+{
+	
 }
 
 
 
-Tria::Tria(int quantity, int m_a, int m_b,int m_c, int m_angle) :Figure(quantity)
+Tria::Tria(int m_a,int m_b,int m_c, int m_angle) :Figure(m_a)
 {
-	a = m_a;
 	b = m_b;
 	c = m_c;
 	angle = m_angle;
@@ -21,23 +25,23 @@ Tria::Tria(int quantity, int m_a, int m_b,int m_c, int m_angle) :Figure(quantity
 double Tria::square()
 {
 	//square of triagle 
-	return a*b/2*(double)sin(angle*3.14 / 180);
+	return (side*b/2*(double)sin(angle*3.14 / 180));
 }
 
-Square::Square(int quantity, int m_a) :Figure(quantity)
+Square::Square(int m_a) :Figure(m_a)
 {
-	a = m_a;
 }
 
-Recta::Recta(int quantity, int m_a, int m_b):Figure(quantity)
+
+Recta::Recta(int m_a, int m_b):Figure(m_a)
 {
-	a = m_a;
 	b = m_b;
 }
 
-Rhombus::Rhombus(int quantity, int m_a, int m_angle):Figure(quantity)
+Rhombus::Rhombus(int m_a, int m_angle):Figure(m_a)
 {
-	a = m_a;
 	angle = m_angle;
-	h = a*sin(angle*3.14/180);
+	h = side*sin(angle*3.14/180);
 }
+
+
