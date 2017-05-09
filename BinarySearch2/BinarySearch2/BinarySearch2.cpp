@@ -1,5 +1,5 @@
 // BinarySearch.cpp : Defines the entry point for the console application.
-//Find first or last occurence of a number
+//Find first or last occurrence of a number
 
 #include "stdafx.h"
 #include <iostream>
@@ -19,10 +19,10 @@ int binarySearch(int x)
 
 		if (array[mid] == x)
 		{
-			//find the first occurence of "20"
+			//find the first occurrence of "20"
 			result = mid;
 			finish = finish -1;
-			/*also the last occures of "20"
+			/*also the last occurrence of "20"
 			will print '4' element
 			
 			result = mid;
